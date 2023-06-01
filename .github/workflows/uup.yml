@@ -12,10 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Install packages
+        run: sudo apt update && sudo apt install aria2 cabextract wimtools chntpw genisoimage
 
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          unzip *.zip
+          bash uup_download_linux.sh

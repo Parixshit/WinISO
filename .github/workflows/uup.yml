@@ -26,4 +26,4 @@ jobs:
           chmod 600 ssh-key
 
       - name: Upload to SourceForge
-        run: scp -o StrictHostKeyChecking=no -i ssh-key *.iso parixshit@frs.sourceforge.net:/home/frs/project/winiso/
+        run: scp -o StrictHostKeyChecking=no -i ssh-key *.ISO parixshit@frs.sourceforge.net:/home/frs/project/winiso/

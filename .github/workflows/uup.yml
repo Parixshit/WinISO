@@ -18,10 +18,12 @@ jobs:
       - name: Build ISO
         run: |
           unzip *.zip
-        # bash uup_download_linux.sh
+          bash uup_download_linux.sh
+
+      - name: Setup SSH key
+        run: |
+          echo "${{ secrets.SF_SSH_KEY }}" > ssh-key
+          chmod 600 ssh-key
 
       - name: Upload to SourceForge
-        env:
-          PASSWORD: ${{ secrets.SOURCEFORGE_PASSWORD }}
-        run: |
-          sftp -o BatchMode=yes -o Password="$PASSWORD" parixshit@frs.sourceforge.net
+        run: scp -o StrictHostKeyChecking=no -i ssh-key *.iso parixshit@frs.sourceforge.net:/home/frs/project/winiso/

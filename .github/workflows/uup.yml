@@ -21,6 +21,7 @@ jobs:
         # bash uup_download_linux.sh
 
       - name: Upload to SourceForge
+        env:
+          PASSWORD: ${{ secrets.SOURCEFORGE_PASSWORD }}
         run: |
-          put *.zip
-          bash 
+          sftp -o BatchMode=yes -o Password="$PASSWORD" parixshit@frs.sourceforge.net
